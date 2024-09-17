@@ -1,0 +1,9 @@
+build/
+reports/
+node_modules/
+.idea/
+.env
+.DS_Store
+.vscode
+coverage
+**/dist
