@@ -51,13 +51,13 @@ export class FlagsClient {
     this.loading.state = loadingState;
   }
 
-  public getItem<FlagName extends DefinedFlagName["name"]>(
+  public getItem<FlagName extends DefinedFlagName["names"]>(
     flagName: FlagName,
   ): Flag {
     return this.getFlagFromStorage(flagName);
   }
 
-  public getItems<FlagName extends DefinedFlagName["name"]>(
+  public getItems<FlagName extends DefinedFlagName["names"]>(
     flagNames: Array<FlagName>,
   ): FlagsRecord<FlagName> {
     return flagNames.reduce<FlagsRecord>((selectedFlags, flagName) => {
@@ -66,7 +66,7 @@ export class FlagsClient {
     }, {});
   }
 
-  private getFlagFromStorage<FlagName extends DefinedFlagName["name"]>(
+  private getFlagFromStorage<FlagName extends DefinedFlagName["names"]>(
     flagName: FlagName,
   ): Flag {
     if (!this.flagsStorage.has(flagName)) {

@@ -1,47 +1,15 @@
 import "./App.css";
 
-import type { FlagsProvider } from "feature-flags";
-import { FlagsClient } from "feature-flags";
-import type { FC, PropsWithChildren, ReactNode } from "react";
-import { createContext } from "react";
+import { ReactFlagsProvider } from "feature-flags-react";
+import type { ReactNode } from "react";
 
-import { ComponentWithFlag } from "./ComponentWithFlag.ts";
-
-const exmpleProvider: FlagsProvider = {
-  name: "example-provider",
-  async load() {
-    return [
-      {
-        name: "test",
-        enabled: true,
-      },
-    ];
-  },
-};
-export type FlagsContextValue = {
-  client: FlagsClient;
-};
-
-export const FlagsContext = createContext<FlagsContextValue | null>(null);
-
-export const ReactFlagsProvider: FC<PropsWithChildren<FlagsContextValue>> = (
-  props,
-) => {
-  const { children, client } = props;
-
-  return (
-    <FlagsContext.Provider value={{ client }}>{children}</FlagsContext.Provider>
-  );
-};
+import { flagsClient } from "./flags-client";
+import Page from "./pages";
 
 function App(): ReactNode {
-  const flagsClient = new FlagsClient({
-    providers: [exmpleProvider],
-  });
-
   return (
     <ReactFlagsProvider client={flagsClient}>
-      <ComponentWithFlag />
+      <Page />
     </ReactFlagsProvider>
   );
 }

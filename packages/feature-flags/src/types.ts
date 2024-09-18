@@ -36,5 +36,5 @@ export type FlagsLoading = {
 };
 
 export interface DefinedFlagName {
-  name: "test";
+  names: string;
 }
