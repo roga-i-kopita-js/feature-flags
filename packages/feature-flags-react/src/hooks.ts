@@ -19,9 +19,7 @@ export function useFlagsContext(): FlagsContextValue {
   return context;
 }
 
-export function useFlag<FlagName extends DefinedFlagName["name"]>(
-  flagName: FlagName,
-): Flag {
+export function useFlag(flagName: DefinedFlagName["names"]): Flag {
   const { client } = useFlagsContext();
   const [flag, setFlag] = useState<Flag>(() => client.getItem(flagName));
 
@@ -37,7 +35,7 @@ export function useFlag<FlagName extends DefinedFlagName["name"]>(
   return flag;
 }
 
-export function useFlags<FlagName extends DefinedFlagName["name"]>(
+export function useFlags<FlagName extends DefinedFlagName["names"]>(
   flagNames: Array<FlagName>,
 ): FlagsRecord<FlagName> {
   const { client } = useFlagsContext();

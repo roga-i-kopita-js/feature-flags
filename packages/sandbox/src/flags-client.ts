@@ -1,4 +1,4 @@
-import type { FlagsProvider } from "feature-flags";
+import type { DefinedFlagName, FlagsProvider } from "feature-flags";
 import { FlagsClient } from "feature-flags";
 
 const staticProvider: FlagsProvider = {
@@ -16,3 +16,5 @@ const staticProvider: FlagsProvider = {
 export const flagsClient = new FlagsClient({
   providers: [staticProvider],
 });
+
+const [flag] = flagsClient.getItems(["featureV1"]);

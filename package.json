@@ -8,7 +8,8 @@
     "lint": "eslint --ignore-pattern .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "lint:fix": "eslint --fix --ignore-pattern .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "preview": "vite preview",
-    "typecheck": "tsc --noEmit"
+    "lint:clear-cache": "pnpm -r -stream lint:clear-cache && rm -rf node_modules/.cache/eslint",
+    "typecheck": "pnpm -r -stream typecheck"
   },
   "devDependencies": {
     "vite": "5.4.5",

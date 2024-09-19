@@ -5,7 +5,11 @@ import { createRoot } from "react-dom/client";
 
 import App from "./App";
 
-createRoot(document.getElementById("root")!).render(
+const root = document.getElementById("root");
+if (!root) {
+  throw new Error("root element must be defined");
+}
+createRoot(root).render(
   <StrictMode>
     <App />
   </StrictMode>,

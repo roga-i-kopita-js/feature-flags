@@ -1,5 +1,4 @@
 {
-  "exclude": [ "sandbox/*"],
   "compilerOptions": {
     "types": ["vite/client", "node"],
     "lib": ["DOM", "DOM.Iterable", "ES2022"],

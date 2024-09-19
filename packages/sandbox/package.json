@@ -8,7 +8,8 @@
     "build:prod": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "typecheck": "tsc -b"
+    "typecheck": "tsc -b",
+    "lint:clear-cache": "rm -rf node_modules/.cache/eslint"
   },
   "dependencies": {
     "react": "18.3.1",

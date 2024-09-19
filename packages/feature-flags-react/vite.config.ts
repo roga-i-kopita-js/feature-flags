@@ -11,5 +11,8 @@ export default defineConfig({
       name: "feature-flags",
       fileName: "index",
     },
+    rollupOptions: {
+      external: ["react"],
+    },
   },
 });

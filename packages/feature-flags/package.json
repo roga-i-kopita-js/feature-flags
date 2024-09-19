@@ -20,7 +20,8 @@
     "lint": "eslint --ignore-pattern .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "lint:fix": "eslint --fix --ignore-pattern .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "preview": "vite preview",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "lint:clear-cache": "rm -rf node_modules/.cache/eslint"
   },
   "dependencies": {
     "mitt": "3.0.1"

@@ -133,6 +133,7 @@ function createTsConfig(opts) {
     rules: {
       ...standardLoveRules,
       ...tsRules,
+      "@typescript-eslint/triple-slash-reference": "off",
       "@typescript-eslint/init-declarations": "off",
       "@typescript-eslint/class-methods-use-this": "off",
       "@typescript-eslint/no-empty-function": "off",
