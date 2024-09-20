@@ -1,6 +1,7 @@
 export { FlagsClient } from "./flags-client";
 export type {
-  DefinedFlagName,
+  // DefinedFlagName,
+  CustomTypeOptions,
   Flag,
   FlagsClientParameters,
   FlagsLoading,
@@ -9,4 +10,5 @@ export type {
   FlagsProvider,
   FlagsRecord,
   FlagsStorage,
+  TypeOptions,
 } from "./types";

@@ -2,7 +2,6 @@ import type { Handler } from "mitt";
 import mitt from "mitt";
 
 import type {
-  DefinedFlagName,
   Flag,
   FlagsClientParameters,
   FlagsLoading,
@@ -11,6 +10,7 @@ import type {
   FlagsProvider,
   FlagsRecord,
   FlagsStorage,
+  TypeOptions,
 } from "./types";
 
 export class FlagsClient {
@@ -51,13 +51,13 @@ export class FlagsClient {
     this.loading.state = loadingState;
   }
 
-  public getItem<FlagName extends DefinedFlagName["names"]>(
+  public getItem<const FlagName extends TypeOptions["flagName"]>(
     flagName: FlagName,
   ): Flag {
     return this.getFlagFromStorage(flagName);
   }
 
-  public getItems<FlagName extends DefinedFlagName["names"]>(
+  public getItems<FlagName extends TypeOptions["flagName"]>(
     flagNames: Array<FlagName>,
   ): FlagsRecord<FlagName> {
     return flagNames.reduce<FlagsRecord>((selectedFlags, flagName) => {
@@ -66,7 +66,7 @@ export class FlagsClient {
     }, {});
   }
 
-  private getFlagFromStorage<FlagName extends DefinedFlagName["names"]>(
+  private getFlagFromStorage<FlagName extends TypeOptions["flagName"]>(
     flagName: FlagName,
   ): Flag {
     if (!this.flagsStorage.has(flagName)) {

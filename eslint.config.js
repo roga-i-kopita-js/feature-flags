@@ -1,6 +1,3 @@
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-
 import pluginTypescript from "@typescript-eslint/eslint-plugin";
 import typescriptParser from "@typescript-eslint/parser";
 import configStandardWithTypescript from "eslint-config-love";
@@ -219,13 +216,11 @@ function createTsConfig(opts) {
   };
 }
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 export default [
   baseConfig,
   createTsConfig({
-    tsconfigRootDir: __dirname,
-    project: ["./tsconfig.json"],
+    tsconfigRootDir: import.meta.dirname,
+    project: ["./tsconfig.json", "./packages/*/tsconfig.json"],
   }),
   {
     // in main config for TSX/JSX source files

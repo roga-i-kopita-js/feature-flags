@@ -1,4 +1,4 @@
-import { useFlag, useFlags } from "feature-flags-react";
+import { useFlag } from "feature-flags-react";
 import type { ReactNode } from "react";
 import { useEffect, useState } from "react";
 
@@ -18,7 +18,7 @@ type LoadData = {
 const loadData = async function (): Promise<LoadData> {
   const result: LoadData = {};
   // во время загрузки данных можем использовать клиент напрямую
-  if (flagsClient.getItem("featureV122").enabled) {
+  if (flagsClient.getItem("featureV1").enabled) {
     result.featureV1 = await getDataForV1Feature();
   } else {
     result.featureV2 = await getDataForV2Feature();
@@ -34,8 +34,7 @@ export default function Page(): ReactNode {
   }, []);
 
   // в реакт компонентах можем использовать хук
-  const { enabled } = useFlag("dff");
-  const [flag] = useFlags(["dff"]);
+  const { enabled } = useFlag("featureV1");
 
   if (enabled && state.featureV1) {
     return <FeatureV1 data={state.featureV1} />;

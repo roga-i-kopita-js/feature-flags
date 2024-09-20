@@ -1,14 +1,13 @@
 export type Flag = {
-  name: string;
+  name: Key;
   enabled: boolean;
 };
 
-export type FlagsRecord<FlagName extends string = string> = Record<
-  FlagName,
-  Flag
->;
+type Key = string | number;
 
-export type FlagsStorage = Map<string, Flag>;
+export type FlagsRecord<FlagName extends Key = Key> = Record<FlagName, Flag>;
+
+export type FlagsStorage = Map<Key, Flag>;
 
 export interface FlagsProvider {
   /**
@@ -48,6 +47,10 @@ export type FlagsLoading = {
   error: unknown;
 };
 
-export interface DefinedFlagName {
-  names: string;
-}
+export type $MergeBy<T, K> = Omit<T, keyof K> & K;
+
+export interface CustomTypeOptions {}
+
+export type TypeOptions = $MergeBy<{ flagName: string }, CustomTypeOptions>;
+
+// export type DefinedFlagName = TypeOptions["flagName"];

@@ -1,8 +1,9 @@
 import type {
-  DefinedFlagName,
+  // TypeOptions["flagName"],
   Flag,
   FlagsLoading,
   FlagsRecord,
+  TypeOptions,
 } from "feature-flags";
 import { useContext, useEffect, useState } from "react";
 
@@ -19,7 +20,9 @@ export function useFlagsContext(): FlagsContextValue {
   return context;
 }
 
-export function useFlag(flagName: DefinedFlagName["names"]): Flag {
+export function useFlag<FlagName extends TypeOptions["flagName"]>(
+  flagName: FlagName,
+): Flag {
   const { client } = useFlagsContext();
   const [flag, setFlag] = useState<Flag>(() => client.getItem(flagName));
 
@@ -35,7 +38,7 @@ export function useFlag(flagName: DefinedFlagName["names"]): Flag {
   return flag;
 }
 
-export function useFlags<FlagName extends DefinedFlagName["names"]>(
+export function useFlags<FlagName extends TypeOptions["flagName"]>(
   flagNames: Array<FlagName>,
 ): FlagsRecord<FlagName> {
   const { client } = useFlagsContext();
