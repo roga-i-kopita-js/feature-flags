@@ -49,8 +49,8 @@ export type FlagsLoading = {
 
 export type $MergeBy<T, K> = Omit<T, keyof K> & K;
 
-export interface CustomTypeOptions {}
+export interface CustomFlagOptions {}
 
-export type TypeOptions = $MergeBy<{ flagName: string }, CustomTypeOptions>;
+export type FlagOptions = $MergeBy<{ flagName: string }, CustomFlagOptions>;
 
-// export type DefinedFlagName = TypeOptions["flagName"];
+export type DefinedFlagName = FlagOptions["flagName"];
