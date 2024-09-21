@@ -33,25 +33,6 @@ export const flagsClient = new FlagsClient({
 await flagsClient.load()
 ```
 
-### Now you can get access to single "feature flag" like:
-```ts
-const flag = flagsClient.getItem("name"); 
-
-if (flag.enabled) {
-    // do something
-}
-```
-
-### Multiple
-```ts
-// multiple flags
-const { flag1 } = flagsClient.getItems(["flag1"]);
-
-if (flag1.enabled) {
-    // do something
-}
-```
-
 ### Subscribe to loading state
 
 ```ts
@@ -75,6 +56,27 @@ flagsClient.off('loadingFailed', handler);
 flagsClient.off("loadingFailed", handler);
 flagsClient.off("loadingStarted", handler);
 ```
+
+
+### Now you can get access to single "feature flag" like:
+```ts
+const flag = flagsClient.getItem("name"); 
+
+if (flag.enabled) {
+    // do something
+}
+```
+
+### Multiple
+```ts
+// multiple flags
+const { flag1 } = flagsClient.getItems(["flag1"]);
+
+if (flag1.enabled) {
+    // do something
+}
+```
+
 
 ## React integration
 
