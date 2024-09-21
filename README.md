@@ -106,8 +106,8 @@ export const flagsClient = new FlagsClient({
 
 export const App: FC = () => {
     return <ReactFlagsProvider client={flagsClient}>
-        <Component/>
-    </ReactFlagsProvider>
+              <Component/>
+           </ReactFlagsProvider>
 }
 
 export const Component: FC = () => {
