@@ -49,6 +49,7 @@ export type FlagsLoading = {
 
 export type $MergeBy<T, K> = Omit<T, keyof K> & K;
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface CustomFlagOptions {}
 
 export type FlagOptions = $MergeBy<{ flagName: string }, CustomFlagOptions>;

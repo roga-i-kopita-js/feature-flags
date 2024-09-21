@@ -16,6 +16,4 @@ const staticProvider: FlagsProvider = {
 export const flagsClient = new FlagsClient({
   providers: [staticProvider],
 });
-
-const { featureV1 } = flagsClient.getItems(["featureV12"]);
-const { enabled } = flagsClient.getItem("featureV12");
+flagsClient.off("loadingFailed", handler);

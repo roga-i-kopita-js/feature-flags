@@ -45,11 +45,35 @@ if (flag.enabled) {
 ### Multiple
 ```ts
 // multiple flags
-const [flag] = flagsClient.getItems(["name"]);
+const { flag1 } = flagsClient.getItems(["flag1"]);
 
-if (flag.enabled) {
+if (flag1.enabled) {
     // do something
 }
+```
+
+### Subscribe to loading state
+
+```ts
+import {flagsClient} from "./flags-client";
+
+const { state, error } = flagsClient.loading;
+// state = indeterminate |  loadingStarted | loaded | loadingFailed
+// error = if error here will be errors
+
+const handler = () => {
+    // do something
+}
+
+// You can subscribe to events
+flagsClient.on("loaded", handler);
+flagsClient.on("loadingFailed", handler);
+flagsClient.on("loadingStarted", handler);
+
+// nex you can unsubscribe like this
+flagsClient.off('loadingFailed', handler);
+flagsClient.off("loadingFailed", handler);
+flagsClient.off("loadingStarted", handler);
 ```
 
 ## React integration
@@ -93,9 +117,9 @@ export const Component: FC = () => {
     }
     
     // multiple
-    const [flag] = useFlags(["dff"]);
+    const {flag1} = useFlags(["flag1"]);
     
-    if (flag.enabled) {
+    if (flag1.enabled) {
         //do something
     }
     

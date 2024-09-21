@@ -18,7 +18,7 @@ type LoadData = {
 const loadData = async function (): Promise<LoadData> {
   const result: LoadData = {};
   // во время загрузки данных можем использовать клиент напрямую
-  if (flagsClient.getItem("featureV1").enabled) {
+  if (flagsClient.getItem("flag1").enabled) {
     result.featureV1 = await getDataForV1Feature();
   } else {
     result.featureV2 = await getDataForV2Feature();
@@ -34,7 +34,7 @@ export default function Page(): ReactNode {
   }, []);
 
   // в реакт компонентах можем использовать хук
-  const { enabled } = useFlag("featureV1");
+  const { enabled } = useFlag("flag1");
 
   if (enabled && state.featureV1) {
     return <FeatureV1 data={state.featureV1} />;

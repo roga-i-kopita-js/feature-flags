@@ -3,6 +3,7 @@ export type {
   CustomFlagOptions,
   DefinedFlagName,
   Flag,
+  FlagOptions,
   FlagsClientParameters,
   FlagsLoading,
   FlagsLoadingEvents,
@@ -10,5 +11,4 @@ export type {
   FlagsProvider,
   FlagsRecord,
   FlagsStorage,
-  FlagOptions,
 } from "./types";
