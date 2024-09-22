@@ -14,9 +14,9 @@ import type {
 } from "./types";
 
 export class FlagsClient {
-  private readonly flagsStorage: FlagsStorage;
-  private readonly providers: ReadonlyArray<FlagsProvider>;
-  private readonly eventEmitter = mitt<FlagsLoadingEvents>();
+  protected readonly flagsStorage: FlagsStorage;
+  protected readonly providers: ReadonlyArray<FlagsProvider>;
+  protected readonly eventEmitter = mitt<FlagsLoadingEvents>();
 
   public readonly loading: FlagsLoading = {
     state: "indeterminate",
@@ -30,7 +30,7 @@ export class FlagsClient {
         : undefined,
     );
     this.providers = parameters.providers ?? [];
-    this.eventEmitter.on("*", (type) => this.setLoadingState.bind(type));
+    this.eventEmitter.on("*", this.setLoadingState.bind(this));
   }
 
   async load(): Promise<void> {
@@ -47,7 +47,7 @@ export class FlagsClient {
     }
   }
 
-  private setLoadingState(loadingState: FlagsLoadingState): void {
+  protected setLoadingState(loadingState: FlagsLoadingState): void {
     this.loading.state = loadingState;
   }
 
@@ -66,7 +66,7 @@ export class FlagsClient {
     }, {});
   }
 
-  private getFlagFromStorage<FlagName extends DefinedFlagName>(
+  protected getFlagFromStorage<FlagName extends DefinedFlagName>(
     flagName: FlagName,
   ): Flag {
     if (!this.flagsStorage.has(flagName)) {

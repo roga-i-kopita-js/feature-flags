@@ -16,4 +16,3 @@ const staticProvider: FlagsProvider = {
 export const flagsClient = new FlagsClient({
   providers: [staticProvider],
 });
-flagsClient.off("loadingFailed", handler);

@@ -16,8 +16,9 @@
     "feature-flags": "workspace:*"
   },
   "devDependencies": {
+    "@types/react": "18.3.1",
     "react": "18.3.1",
-    "@types/react": "18.3.1"
+    "vitest": "^2.1.1"
   },
   "peerDependencies": {
     "feature-flags": "workspace:*",

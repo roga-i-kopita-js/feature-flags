@@ -16,6 +16,8 @@
   "typings": "dist/index.d.ts",
   "type": "module",
   "scripts": {
+    "unit-test:watch": "vitest",
+    "unit-test:run": "vitest run",
     "build": "vite build",
     "lint": "eslint --ignore-pattern .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "lint:fix": "eslint --fix --ignore-pattern .gitignore --cache --cache-location ./node_modules/.cache/eslint .",

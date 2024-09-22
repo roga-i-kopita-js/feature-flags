@@ -1,7 +1,7 @@
 import { resolve } from "node:path";
 
-import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
+import { defineConfig } from "vitest/config";
 
 export default defineConfig({
   plugins: [dts()],
@@ -11,5 +11,9 @@ export default defineConfig({
       name: "feature-flags",
       fileName: "index",
     },
+  },
+  test: {
+    environment: "jsdom",
+    globals: true,
   },
 });
